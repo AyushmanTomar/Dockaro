@@ -1,0 +1,4 @@
+flask
+numpy
+pypdf[full]
+pdf2image

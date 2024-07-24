@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/dockaro_logo.png')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <title>DOCKARO</title>
+</head>
+
+<body>
+    <div class="loader-box" id="loader-box">
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+
+    </div>
+    <div class="container">
+        <nav class="nav-bar">
+            <div class="logo-box">
+                <img src="{{url_for('static',filename='images/icon.png')}}" alt="" width="45px" height="45px">
+                <div class="logo-text">
+                    <h1 id="logo-a">DOC <span id="logo-b">KARO</span></h1>
+                </div>
+            </div>
+            <div class="links-box">
+                <a href="/"><i class="uil uil-estate"></i> Home</a>
+                <a href="/tools"><i class="uil uil-wrench"></i> Tools</a>
+                <a href="/premium"><i class="uil uil-star"></i> Premium</a>
+                <a href="/"><i class="uil uil-info-circle" style="font-size: 20px;"></i> About</a>
+            </div>
+            <div class="login-box">
+                <button class="login"><i class="uil uil-user-circle"></i> Login</button>
+            </div>
+        </nav>
+        <section style="margin-top: 70px; z-index: 99;">
+            <div class='air air1'></div>
+            <div class='air air2'></div>
+            <div class='air air3'></div>
+            <div class='air air4'></div>
+        </section>
+
+
+        <div class="content-box">
+            <div class="top">
+                <img src="{{url_for('static',filename='/images/icon.png')}}" alt="">
+                <h1><span id="bold">DOC </span> <span id="regular">KARO </span>is your new College Partner!</h1>
+                <h3 style="text-align: center;">We are here to help you submit your assignments on time. Leverage our
+                    suite of tools to manage your digital documents and enhance your workflow efficiency effortlessly.
+                </h3>
+            </div>
+            <div id="ai"></div>
+            <div id="trending"></div>
+            <div class="heading">
+                <img src="{{url_for('static',filename='/images/trending.png')}}" alt="" id="premium"
+                    style="margin-right: 0px;">
+                <h1>Trending <span style="color: red;">Tools</span></h1>
+            </div>
+
+            <div class="features-box">
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/merge_pdf.png')}}" alt="">
+                        <p class="text-title">Merge PDF</p>
+                        <p class="text-body">Merge 2 or more PDF together.</p>
+                    </div>
+                    <button class="card-button">Merge PDF <i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/compressed_pdf.png')}}" alt="">
+                        <p class="text-title">Compress PDF</p>
+                        <p class="text-body">Compress PDF to 3 different levels.</p>
+                    </div>
+                    <button class="card-button">Compress PDF <i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/img_convert.png')}}" alt="">
+                        <p class="text-title">PDF to Image</p>
+                        <p class="text-body">Convert PDF to images online.</p>
+                    </div>
+                    <button class="card-button">Make Images<i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/pdf_convert.png')}}" alt="" id="pdf_convert">
+                        <p class="text-title">Image to PDF</p>
+                        <p class="text-body">Convert images to PDF online.</p>
+                    </div>
+                    <button class="card-button">Convert to PDF<i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/encrypt_pdf.png')}}" alt="">
+                        <p class="text-title">Encrypt PDF</p>
+                        <p class="text-body">Make any PDF Password Protected.</p>
+                    </div>
+                    <button class="card-button">Encript PDF <i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/decrypt.png')}}" alt="" id="decrypt">
+                        <p class="text-title">Decrypt PDF</p>
+                        <p class="text-body">Remove Password from any PDF.</p>
+                    </div>
+                    <button class="card-button">Decrypt PDF <i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/text.png')}}" alt="" id="pdf_convert">
+                        <p class="text-title">Extract text</p>
+                        <p class="text-body">Extract text from PDF online.</p>
+                    </div>
+                    <button class="card-button">Extract Text<i class="uis uis-arrow-up-right"></i></button>
+                </div>
+                <div class="card">
+                    <div class="card-details">
+                        <img src="{{url_for('static',filename='images/extract_img.png')}}" alt="" id="pdf_convert">
+                        <p class="text-title">Extract Images</p>
+                        <p class="text-body">Extract images from PDF online.</p>
+                    </div>
+                    <button class="card-button">Extract Images<i class="uis uis-arrow-up-right"></i></button>
+                </div>
+            </div>
+            <div class="heading">
+                <img src="{{url_for('static',filename='/images/premium.png')}}" alt="" id="premium">
+                <h1> Premium <span style="color: red;">AI-Tools</span></h1>
+            </div>
+            <div class="features-box" style="justify-content: space-between; padding: 0px 5em">
+                <div class="card1">
+                    <div class="image1">
+                        <img src="{{url_for('static',filename='/images/notes.jpg')}}" alt="">
+                    </div>
+                    <div class="content1">
+                        <a href="#">
+                            <span class="title1">
+                                Make notes and get important questions from PDF/DOCX.
+                            </span>
+                        </a>
+
+                        <p class="desc1">
+                            Use our AI Algorithm to make notes, generate summaries from the PDF, Generate Important
+                            questions from the PDF. A perfect tool for last minute Preparation.
+                        </p>
+
+                        <a class="action1" href="#">
+                            Try Making Notes
+                            <span aria-hidden="true">
+                                →
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card1">
+                    <div class="image1">
+                        <img src="{{url_for('static',filename='/images/morph.png')}}" alt="">
+                    </div>
+                    <div class="content1">
+                        <a href="#">
+                            <span class="title1">
+                                Revolutionary AI tool to create morphed PDF Assignment.
+                            </span>
+                        </a>
+
+                        <p class="desc1">
+                            Feeling Lazy to do Assignments? We have got you covered! With our AI tool you can morph your
+                            friend's assignment and make it yours and unique.
+                        </p>
+
+                        <a class="action1" href="#">
+                            AI Assignment Morph
+                            <span aria-hidden="true">
+                                →
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer" style="margin-top: 200px;">
+            <div class="container1">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>company</h4>
+                        <ul>
+                            <li><a href="#">about us</a></li>
+                            <li><a href="#">our services</a></li>
+                            <li><a href="#">privacy policy</a></li>
+                            <li><a href="#">blogs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="#">how to?</a></li>
+                            <li><a href="#">AI</a></li>
+                            <li><a href="#">data</a></li>
+                          
+                            <li><a href="#">payment options</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>online tools</h4>
+                        <ul>
+                            <li><a href="#">compress pdf</a></li>
+                            <li><a href="#">edit text</a></li>
+                            <li><a href="#">merge pdf</a></li>
+                            <li><a href="#">make assignmants</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('loader-box');
+            preloader.style.display = 'none'; // Hide preloader
+        });
+    </script>
+
+</body>
+
+</html>
