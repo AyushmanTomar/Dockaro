@@ -1,0 +1,208 @@
+.container2 {
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 5px;
+    background-color: #7ed9570e;
+}
+
+.header2 {
+    flex: 1;
+    width: 100%;
+    border: 2px dashed #7ED957;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header2 svg {
+    height: 100px;
+}
+
+.header2 p {
+    text-align: center;
+    color: black;
+}
+
+.footer2 {
+    background-color: #7ed95756;
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: black;
+    border: none;
+    box-sizing: border-box;
+}
+
+.footer2 svg {
+    height: 130%;
+    fill: #7ED957;
+    background-color: rgba(70, 66, 66, 0.103);
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.205);
+}
+
+.footer2 p {
+    flex: 1;
+    text-align: center;
+}
+
+#file {
+    display: none;
+}
+
+
+.left {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.right {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header2 {
+    overflow-x: auto;
+    /* scrollbar-width: 2px; */
+    -ms-overflow-style: none;
+    box-sizing: border-box;
+    height: min-content;
+}
+
+.header2::-webkit-scrollbar {
+    height: 5px;
+}
+
+.content-box {
+    background: #539a3423;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.filelist {
+    height: max-content;
+    box-sizing: border-box;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.head-karo {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 50px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.head-karo-in {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.submit-files {
+    padding: 10px 15px;
+    align-self: center;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    background: red;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+    width: 150px;
+}
+
+.submit-files:hover {
+    background: #7ED957;
+    color: white;
+    border: 2px solid #7ED957;
+}
+
+/* From Uiverse.io by ozgeozkaraa01 */
+.group {
+    display: flex;
+    line-height: 30px;
+    align-items: center;
+    position: relative;
+    max-width: 700px;
+}
+
+.input {
+    width: 100%;
+    height: 45px;
+    line-height: 30px;
+    padding: 0 5rem;
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+}
+
+.input::placeholder {
+    color: #94a3b8;
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    border-color: rgb(255, 57, 57);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgba(248, 129, 129, 0.3);
+}
+
+.icon {
+    position: absolute;
+    left: 1rem;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+}
+.password-box{
+    height: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.password-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add{
+    width: 60%;
+}
