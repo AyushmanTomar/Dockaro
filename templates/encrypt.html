@@ -24,13 +24,41 @@
         </div>
 
     </div>
-    <div class="loader-box" id="loaderad">
-        <div class="typewriter">
-            <div class="slide"><i></i></div>
-            <div class="paper"></div>
-            <div class="keyboard"></div>
+    <div class="loader-box" id="loaderad" style="background: rgba(255, 255, 255, 0.8); justify-content: space-between;">
+        <div class="add">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'e8a5812e30215067a25e2634d7afefaa',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.topcreativeformat.com/e8a5812e30215067a25e2634d7afefaa/invoke.js"></script>
         </div>
-
+        <div class="anim" style="align-items: center; display: flex; flex-direction: column; gap: 10px;">
+            <div class="typewriter">
+                <div class="slide"><i></i></div>
+                <div class="paper"></div>
+                <div class="keyboard"></div>
+            </div>
+            <h2>Processing <span style="color: red;">PDF...</span></h2>
+        </div>
+        <div class="add">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'e8a5812e30215067a25e2634d7afefaa',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.topcreativeformat.com/e8a5812e30215067a25e2634d7afefaa/invoke.js"></script>
+        </div>
     </div>
     <div class="container" style="height: 100vh;">
         <nav class="nav-bar">
@@ -263,7 +291,7 @@
             var xhr = new XMLHttpRequest();
             xhr.open(form.method, form.action, true);
             xhr.responseType = 'blob';
-            xhr.onload = function() {
+            xhr.onload = function () {
                 hideLoader();
                 if (xhr.status === 200) {
                     var contentDisposition = xhr.getResponseHeader('Content-Disposition');
@@ -277,7 +305,7 @@
                     alert('Error: ' + xhr.statusText);
                 }
             };
-            xhr.onerror = function() {
+            xhr.onerror = function () {
                 hideLoader();
                 alert('Request failed');
             };
