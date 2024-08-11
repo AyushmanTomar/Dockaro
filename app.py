@@ -137,5 +137,47 @@ def dockaroai(prompt):
     )
     response = chat_session.send_message(prompt)
     return(response.text)
+
+
+@app.route('/compress')
+def compress():
+    return render_template('compress.html')
+
+@app.route('/compresspdf', methods=['POST'])
+def compresspdf():
+    images=request.form['images'] #1 for remove 0 to compress
+    q = request.form['quality'] # returns integer from 0 -80
+    q=int(q)
+    file = request.files['file']
+    print(images+"  ",images,q)
+    if(file):
+        reader = PdfReader(file)
+        writer = PdfWriter()
+        for page in reader.pages:
+            writer.add_page(page)
+        if reader.metadata is not None:
+            writer.add_metadata(reader.metadata)
+        if (images=='1'):
+            writer.remove_images()
+        for page in writer.pages:
+            if(images=='0'):
+                for img in page.images:
+                    img.replace(img.image, quality=q)
+            page.compress_content_streams()
+            if reader.metadata is not None:
+                writer.add_metadata(reader.metadata)
+
+        stream = BytesIO()
+        writer.write(stream)
+        stream.seek(0)
+        file_name=file.filename[:-4]+"_compressed.pdf"
+        response = make_response(send_file(stream, mimetype='application/pdf'))
+        response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
+        return response
+
+    
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
