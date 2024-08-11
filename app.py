@@ -1,9 +1,17 @@
 from flask import Flask,request,render_template,make_response,send_file,after_this_request
-import io
 from io import BytesIO
 from pypdf import PdfReader,PdfWriter
+import os
+import markdown
+import re
+import google.generativeai as genai
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+
+
 
 @app.route('/')
 def homepage():
@@ -75,5 +83,59 @@ def decrypt_pdf():
     error="Error: File or password missing"
     return(render_template('encrypt.html',error=error))
 
+
+@app.route('/pdfsummary')
+def pdfsummary():
+    return render_template('summary.html')
+
+
+@app.route('/gensummary', methods=['POST'])
+def summary():
+    error=None
+    file = request.files['file']
+    extra = request.form['extra']
+    specific=request.form['specific']
+    reader = PdfReader(file)
+    text = ""
+    i=1
+    for page in reader.pages:
+        text = text+"page "+str(i)+":\n\n"+page.extract_text()
+        i+=1
+    prompt=text +"\nYour Name is DocKaro Ai, generate large page wise summary of the above text explaining concepts covered on that page concidering examples on that respective page.once this is done print At the end list of questions possible to ask in exam from the text.Tell no extra details."
+    if(extra):
+        prompt+=" also print"+extra+"in a new section named 'Answer to your question.'"
+    elif(specific):
+        prompt=text+"\n"+specific
+    ans = dockaroai(prompt)
+    html = markdown.markdown(ans)
+    html = re.sub(r'\- ', '<br>', html)
+    html = re.sub(r'\* ', '<br>', html)
+    print(html)
+    return render_template('summary.html',response=html)
+
+
+def dockaroai(prompt):
+    api_key = os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=api_key)
+    
+    generation_config = {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "top_k": 64,
+    "max_output_tokens": 15000,
+    "response_mime_type": "text/plain",
+    }
+
+    model = genai.GenerativeModel(
+    model_name="gemini-1.0-pro",
+    generation_config=generation_config,
+    )
+
+    chat_session = model.start_chat(
+    history=[
+    ]
+    )
+    response = chat_session.send_message(prompt)
+    return(response.text)
 if __name__ == '__main__':
     app.run(debug=True)

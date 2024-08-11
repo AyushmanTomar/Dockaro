@@ -207,3 +207,22 @@ input:hover {
 .add{
     width: 60%;
 }
+
+
+.response{
+    font-size: 17px;
+    ul{
+        margin-bottom: 10px;
+    }
+    li{
+        margin-bottom: 5px;
+    }
+    h2{
+        margin-bottom: 10px;
+    }
+    ol{
+        margin-left: 30px;
+    }
+    
+}
+

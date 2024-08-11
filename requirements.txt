@@ -3,3 +3,6 @@ numpy
 pypdf[full]
 pdf2image
 gunicorn
+google-generativeai
+python-dotenv
+markdown
