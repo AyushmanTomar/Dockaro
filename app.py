@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,make_response,send_file,after_this_request
+from flask import Flask,request,render_template,make_response,send_file,jsonify
 from io import BytesIO
 from pypdf import PdfReader,PdfWriter
 import os
@@ -110,8 +110,8 @@ def summary():
     html = markdown.markdown(ans)
     html = re.sub(r'\- ', '<br>', html)
     html = re.sub(r'\* ', '<br>', html)
-    print(html)
-    return render_template('summary.html',response=html)
+    # print(html)
+    return jsonify({'response': html})
 
 
 def dockaroai(prompt):

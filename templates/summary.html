@@ -86,7 +86,7 @@
             <div class='air air4'></div>
         </section>
 
-        <form action="/gensummary" method="post" enctype="multipart/form-data" autocomplete="off"
+        <form id="summaryForm" enctype="multipart/form-data" autocomplete="off"
             onsubmit="showLoader()" id="decryptform">
             <div class="box">
                 {% if error %}
@@ -142,26 +142,27 @@
                                 <p id="files_not">File not selected</p>
 
                             </label>
-                            <input id="file" type="file" multiple name="file" accept=".pdf" required>
+                            <input id="file" type="file" name="file" accept=".pdf" required>
                         </div>
                     </div>
                     <div class="line"></div>
                     <div class="right">
                         <div class="password-box">
                             <div class="password-head">
-                                <img src="{{url_for('static',filename='images/artificial-intelligence.png')}}" alt="" width="45px">
-                                <h2>Generate Summaries from PDF.</h2>
+                                <img src="{{url_for('static',filename='images/artificial-intelligence.png')}}" alt=""
+                                    width="45px">
+                                <h2>Generate Summaries from PDF</h2>
                             </div>
                             <div class="password-form">
                                 <label for="extra">Ask extra Question along with notes</label>
                                 <div class="group">
                                     <input class="input" type="text" placeholder="Type Question" id="extra"
-                                        name="extra" >
+                                        name="extra">
                                 </div>
                                 <label for="specific">Ask specific questions from PDF</label>
                                 <div class="group">
                                     <input class="input" type="text" placeholder="Type Question" id="specific"
-                                        name="specific" >
+                                        name="specific">
                                 </div>
                             </div>
                         </div>
@@ -195,18 +196,14 @@
             </div>
         </form>
     </div>
-
-    {% if response %}
-    <div
-        style="height: fit-content; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-
+    <div style="height: fit-content; display: flex; align-items: center; justify-content: center; flex-direction: column; display: none;" id="response-box">
         <div style="width: 90%;" class="response">
             <h1 style="align-self: flex-start; margin-bottom: 20px;">Generated <span style="color: red;">Analysis</span>
-            </h1> {{
-            response|safe }}
+            </h1>
+            <div id="response" style="width: 100%;"></div>
         </div>
     </div>
-    {% endif %}
+
     <footer class="footer" style="margin-top: 100px;">
         <div class="container1">
             <div class="row">
@@ -277,6 +274,32 @@
             window.alert(msg);
         }
     </script>
+    <script>
+        document.getElementById('summaryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('loaderad').style.display = 'flex';
+            document.getElementById('response-box').style.display = 'flex';
+            const formData = new FormData(this);
+            fetch('/gensummary', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                document.getElementById('loaderad').style.display = 'none';
+                document.getElementById('response').innerHTML = data.response;
+                document.getElementById('extra').value=""
+                document.getElementById('specific').value=""
+                document.getElementById('loaderad').style.display = 'none';
+            })
+            .catch(error => {
+                document.getElementById('loaderad').style.display = 'none';
+                document.getElementById('response').innerHTML = 'An error occurred';
+            });
+        });
+    </script>
+
 </body>
 
 </html>
