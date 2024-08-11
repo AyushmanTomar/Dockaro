@@ -149,7 +149,9 @@ body {
 }
 
 
-
+#loaderad{
+    display: none;
+}
 .card {
     width: 190px;
     height: 254px;

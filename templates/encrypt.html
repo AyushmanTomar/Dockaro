@@ -13,12 +13,18 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <title>DOCKARO Encrypt PDF</title>
-    <script type='text/javascript'
-        src='//pl24000512.highratecpm.com/22/bc/9b/22bc9b15306d489b164af8a7a4e8a4a0.js'></script>
 </head>
 
 <body>
     <div class="loader-box" id="loader-box">
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+
+    </div>
+    <div class="loader-box" id="loaderad">
         <div class="typewriter">
             <div class="slide"><i></i></div>
             <div class="paper"></div>
@@ -52,7 +58,7 @@
             <div class='air air4'></div>
         </section>
 
-        <form action="/encryptpdf" method="post" enctype="multipart/form-data" autocomplete="off">
+        <form action="/encryptpdf" method="post" enctype="multipart/form-data" autocomplete="off" id="encryptform">
             <div class="box">
                 {% if error %}
                 <div
@@ -241,6 +247,43 @@
         function error(msg) {
             window.alert(msg);
         }
+    </script>
+    <script>
+        function showLoader() {
+            document.getElementById('loaderad').style.display = 'flex';
+        }
+
+        function hideLoader() {
+            document.getElementById('loaderad').style.display = 'none';
+        }
+
+        document.getElementById('encryptform').addEventListener('submit', function (event) {
+            showLoader();
+            var form = event.target;
+            var xhr = new XMLHttpRequest();
+            xhr.open(form.method, form.action, true);
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                hideLoader();
+                if (xhr.status === 200) {
+                    var contentDisposition = xhr.getResponseHeader('Content-Disposition');
+                    var fileName = contentDisposition.split('filename=')[1].trim();
+                    var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
+                } else {
+                    alert('Error: ' + xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                hideLoader();
+                alert('Request failed');
+            };
+            xhr.send(new FormData(form));
+            event.preventDefault();
+        });
     </script>
 </body>
 
