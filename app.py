@@ -1,8 +1,12 @@
-from flask import Flask,request,render_template,make_response,send_file,jsonify
+from flask import Flask,request,render_template,make_response,send_file,jsonify,after_this_request,send_from_directory
 from io import BytesIO
+from pdf2image import convert_from_path
+import os
+import zipfile
 from pypdf import PdfReader,PdfWriter
 import os
 import markdown
+import fitz
 import re
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -175,7 +179,68 @@ def compresspdf():
         response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
         return response
 
+
+
+@app.route('/toimages')
+def pdfimages():
+    return render_template('toimages.html',error="")
+
+
+
+@app.route('/pdftoimages', methods=['POST'])
+def topdfimages():
+    if 'file' not in request.files:
+        error= "No file part"
+        return render_template('toimages.html',error=error)
     
+    file = request.files['file']
+    all = request.form.get('all','0')
+    i = request.form.get('start','0')
+    j = request.form.get('end','-1')
+    
+    if file.filename == '':
+        error= "No selected file"
+        return render_template('toimages.html',error=error)
+    
+    pdf_document = fitz.open(stream=file.read(), filetype="pdf")
+    image_files = []
+    if (all=='1'):
+        i=0
+        j=int(pdf_document.page_count)
+        print(1)
+    elif (j=='' or j==None or int(j)>pdf_document.page_count or int(j)<0):
+        if(int(i)!=0):
+            i=int(i)-1
+        else:
+            i=0
+        j=int(pdf_document.page_count)
+        print(2)
+    elif ( int(i)>pdf_document.page_count or int(i)<0 ):
+        i=0
+        j=int(pdf_document.page_count)
+    elif ( int(i)==0 ):
+        i=0
+        j=int(j)
+    else:
+        i=int(i)-1
+        j=int(j)
+        print(3)
+    print(type(i),type(j))
+    for page_num in range(i,j):
+        page = pdf_document.load_page(page_num)
+        pix = page.get_pixmap()
+        image_filename = f"page_{page_num + 1}.png"
+        pix.save(image_filename)
+        image_files.append(image_filename)
+
+    zip_buffer = BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w') as zip_file:
+        for image_file in image_files:
+            zip_file.write(image_file)
+            os.remove(image_file)
+
+    zip_buffer.seek(0)
+    return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='images.zip')
 
 
 

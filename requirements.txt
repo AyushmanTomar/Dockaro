@@ -6,3 +6,4 @@ gunicorn
 google-generativeai
 python-dotenv
 markdown
+PyMuPDF

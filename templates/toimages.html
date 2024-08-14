@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004628083281449"
+        crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/upload.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/dockaro_logo.png')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <title>DOCKARO Convert PDF</title>
+</head>
+
+<body>
+    <div class="loader-box" id="loader-box">
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+
+    </div>
+    <div class="loader-box" id="loaderad" style="background: rgba(255, 255, 255, 0.8); justify-content: space-between;">
+        <div class="add">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'e8a5812e30215067a25e2634d7afefaa',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.topcreativeformat.com/e8a5812e30215067a25e2634d7afefaa/invoke.js"></script>
+        </div>
+        <div class="anim" style="align-items: center; display: flex; flex-direction: column; gap: 10px;">
+            <div class="typewriter">
+                <div class="slide"><i></i></div>
+                <div class="paper"></div>
+                <div class="keyboard"></div>
+            </div>
+            <h2>Processing <span style="color: red;">PDF...</span></h2>
+        </div>
+        <div class="add">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'e8a5812e30215067a25e2634d7afefaa',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="//www.topcreativeformat.com/e8a5812e30215067a25e2634d7afefaa/invoke.js"></script>
+        </div>
+    </div>
+    <div class="container" style="height: 100vh;">
+        <nav class="nav-bar">
+            <div class="logo-box">
+                <img src="{{url_for('static',filename='images/icon.png')}}" alt="" width="45px" height="45px">
+                <div class="logo-text">
+                    <h1 id="logo-a">DOC <span id="logo-b">KARO</span></h1>
+                </div>
+            </div>
+            <div class="links-box">
+                <a href="/"><i class="uil uil-estate"></i> Home</a>
+                <a href="/tools"><i class="uil uil-wrench"></i> Tools</a>
+                <a href="/premium"><i class="uil uil-star"></i> Premium</a>
+                <a href="/"><i class="uil uil-info-circle" style="font-size: 20px;"></i> About</a>
+            </div>
+            <div class="login-box">
+                <button class="login" onclick="location.href='/login'"><i class="uil uil-user-circle"></i>
+                    Login</button>
+            </div>
+        </nav>
+        <section style="margin-top: 70px; z-index: 99; height: 175px;">
+            <div class='air air1'></div>
+            <div class='air air2'></div>
+            <div class='air air3'></div>
+            <div class='air air4'></div>
+        </section>
+
+        <form action="/pdftoimages" method="post" enctype="multipart/form-data" autocomplete="off"
+            onsubmit="showLoader()" id="decryptform">
+            <div class="box">
+                {% if error %}
+                <div
+                    style="color: white; margin-bottom: 30px; font-size: 20px; background:#ff0000ad;padding: 5px 20px; border-radius: 20px;">
+                    <p> {{ error }}</p>
+                </div>
+                {% endif %}
+                <div class="head-karo">
+                    <div class="head-karo-in">
+                        <img src="{{url_for('static',filename='images/img_convert.png')}}" alt="" width="70px">
+                        <div class="">
+                            <h1>Convert <span style="color: red;">PDF</span></h1>
+                            <h3>Convert PDF to png Images.</h3>
+                        </div>
+                    </div>
+                    <button class="submit-files">Process Images</button>
+                </div>
+
+
+                <div class="content-box" style="display: flex; flex-direction: row;">
+                    <div class="left">
+                        <div class="container2">
+                            <div class="header2">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                    id="file_upload_svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <div class="filelist" id="filelist"
+                                    style="width: 90%; height: fit-content; align-self: center; padding: 10px ; display: none;">
+                                    <h1 style="color: red;">Files Selected:</h1>
+                                </div>
+                                <img src="" alt="" width="50%" id="file_upload_txt">
+                                <p id="file_upload_text">Browse PDF to upload!</p>
+                            </div>
+                            <label for="file" class="footer2">
+                                <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path>
+                                        <path d="M18.153 6h-.009v5.342H23.5v-.002z"></path>
+                                    </g>
+                                </svg>
+                                <p id="files_not">File not selected</p>
+
+                            </label>
+                            <input id="file" type="file" name="file" accept=".pdf" required>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="right">
+                        <div class="password-box">
+                            <div class="password-head">
+                                <img src="{{url_for('static',filename='images/compresspdf.png')}}" alt="" width="45px">
+                                <h2>Convert your PDF to Images</h2>
+                            </div>
+                            <div class="password-form">
+                                <label style="color: rgb(67, 67, 67);"><b>Select Options for Convesion</b></label>
+                                <div class="div" style="display: flex; ">
+                                    <div class="height">
+                                        <label for="Height">Start Page</label>
+                                        <input id="Height" type="number" autocomplete="off" name="start" class="input" value="0"/>
+                                      </div>
+                                    <div class="height">
+                                        <label for="Height">End Page</label>
+                                        <input id="Height" type="number" autocomplete="off" name="end" class="input" value=""/>
+                                    </div>
+                                </div>
+                                <div class="radio-input-wrapper" style="margin-top: 20px;">
+                                    <label class="labelr">
+                                        <input name="all" id="all" class="radio-input" value="1" type="checkbox" >
+                                        <div class="radio-design"></div>
+                                        <div class="label-text">Convert all Pages</div>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="add" style="display: flex; gap: 10px; padding: 10px 40px;">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                                    'format': 'iframe',
+                                    'height': 250,
+                                    'width': 300,
+                                    'params': {}
+                                };
+                            </script>
+                            <script type="text/javascript"
+                                src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                                    'format': 'iframe',
+                                    'height': 250,
+                                    'width': 300,
+                                    'params': {}
+                                };
+                            </script>
+                            <script type="text/javascript"
+                                src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="container1">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">how to?</a></li>
+                        <li><a href="#">AI</a></li>
+                        <li><a href="#">data</a></li>
+
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online tools</h4>
+                    <ul>
+                        <li><a href="#">compress pdf</a></li>
+                        <li><a href="#">edit text</a></li>
+                        <li><a href="#">merge pdf</a></li>
+                        <li><a href="#">make assignmants</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('loader-box');
+            preloader.style.display = 'none'; // Hide preloader
+        });
+
+        document.getElementById('file').addEventListener('change', function (e) {
+            console.log(this.files[0].name);
+            var list = document.getElementById('filelist');
+
+            if (this.files.length > 5) {
+                error("Maximum 5 Files are allowed at once!")
+            }
+            else {
+                list.style.display = 'block';
+                document.getElementById("file_upload_svg").style.display = 'none';
+                document.getElementById("file_upload_text").style.display = 'none';
+                document.getElementById("files_not").innerHTML = 'Modify Selected Files';
+                for (var i = 0; i < this.files.length; i++) {
+                    list.innerHTML += '<h2>' + this.files[i].name + '</h2>';
+                }
+            }
+        });
+        function error(msg) {
+            window.alert(msg);
+        }
+    </script>
+    <script>
+        function showLoader() {
+            document.getElementById('loaderad').style.display = 'flex';
+        }
+
+        function hideLoader() {
+            document.getElementById('loaderad').style.display = 'none';
+        }
+
+        document.getElementById('decryptform').addEventListener('submit', function (event) {
+            showLoader();
+            var form = event.target;
+            var xhr = new XMLHttpRequest();
+            xhr.open(form.method, form.action, true);
+            xhr.responseType = 'blob';
+            xhr.onload = function () {
+                hideLoader();
+                if (xhr.status === 200) {
+                    var contentDisposition = xhr.getResponseHeader('Content-Disposition');
+                    var fileName = contentDisposition.split('filename=')[1].trim();
+                    var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
+                } else {
+                    alert('Error: ' + xhr.statusText);
+                }
+            };
+            xhr.onerror = function () {
+                hideLoader();
+                alert('Request failed');
+            };
+            xhr.send(new FormData(form));
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

@@ -273,12 +273,14 @@ input:hover {
     margin: 5px 0;
     cursor: pointer;
     transition: .3s;
+    border: 2px solid #959595;
 }
 
 .labelr:hover,
 .labelr:focus-within,
 .labelr:active {
     background: hsla(0, 0%, 80%, .2);
+    border: 2px solid #7ED957;
 }
 
 .radio-input {
@@ -326,4 +328,41 @@ input:hover {
 
 .radio-input:checked~.label-text {
     color: hsl(0, 0%, 40%);
+}
+
+
+
+/* From Uiverse.io by Samiix10 */
+.height {
+    display: flex;
+    flex-direction: column;
+}
+
+.height label {
+    font-size: 18px;
+    /* margin-left: 10px; */
+}
+
+.height sup {
+    color: red;
+}
+
+.height .input {
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    padding: 10px 10px;
+    width: 50%;
+    height: 20px;
+    background-color: #e1e2e3;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: 300ms ease-in-out;
+    position: relative;
+    margin-top: 10px;
+}
+
+.height .input:focus {
+    background-color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
 }
