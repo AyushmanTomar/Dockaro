@@ -1,6 +1,5 @@
-from flask import Flask,request,render_template,make_response,send_file,jsonify,after_this_request,send_from_directory
+from flask import Flask,request,render_template,make_response,send_file,jsonify
 from io import BytesIO
-from pdf2image import convert_from_path
 import os
 import zipfile
 from pypdf import PdfReader,PdfWriter
@@ -105,7 +104,7 @@ def summary():
     for page in reader.pages:
         text = text+"page "+str(i)+":\n\n"+page.extract_text()
         i+=1
-    prompt=text +"\nYour Name is DocKaro Ai, generate large page wise summary of the above text explaining concepts covered on that page concidering examples on that respective page.once this is done print At the end list of questions possible to ask in exam from the text.Tell no extra details."
+    prompt=text +"\nYour Name is DocKaro Ai, generate large page wise summary of the above text explaining concepts covered on that page concidering examples on that respective page.once this is done print at the end list of possible 10 marks questions to ask in exam from the entered syllabus if given if syllabus is not given generate from full document.Tell no extra details."
     if(extra):
         prompt+=" also print"+extra+"in a new section named 'Answer to your question.'"
     elif(specific):
@@ -114,7 +113,6 @@ def summary():
     html = markdown.markdown(ans)
     html = re.sub(r'\- ', '<br>', html)
     html = re.sub(r'\* ', '<br>', html)
-    # print(html)
     return jsonify({'response': html})
 
 
@@ -241,6 +239,11 @@ def topdfimages():
 
     zip_buffer.seek(0)
     return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='images.zip')
+
+
+@app.route('/gettext')
+def gettext():
+    return render_template('gettext.html',error="")
 
 
 
