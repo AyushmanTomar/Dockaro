@@ -129,7 +129,7 @@ def dockaroai(prompt):
     }
 
     model = genai.GenerativeModel(
-    model_name="gemini-1.0-pro",
+    model_name="gemini-2.0-flash-exp",
     generation_config=generation_config,
     )
 
@@ -144,6 +144,7 @@ def dockaroai(prompt):
 @app.route('/compress')
 def compress():
     return render_template('compress.html')
+
 
 @app.route('/compresspdf', methods=['POST'])
 def compresspdf():
