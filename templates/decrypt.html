@@ -72,10 +72,17 @@
                 <a href="/premium"><i class="uil uil-star"></i> Premium</a>
                 <a href="/"><i class="uil uil-info-circle" style="font-size: 20px;"></i> About</a>
             </div>
+            {% if not user %}
             <div class="login-box">
-                <button class="login" onclick="location.href='/login'"><i class="uil uil-user-circle"></i>
-                    Login</button>
+                <button class="login" onclick="location.href='/login'"><i class="uil uil-user-circle"></i> Login</button>
             </div>
+            {% endif %}
+            {%if user%}
+            <div class="login-box" style="display: flex;flex-direction: row; align-items: center;justify-content: center;gap: 15px;">
+                <div class="" style="color: red; font-size: 20px;cursor: pointer;"><i class="uil uil-user-circle"></i> {{user}}</div>
+                <button class="login" onclick="location.href='/logout'">logout</button>
+            </div>
+            {%endif%}
         </nav>
         <section style="margin-top: 70px; z-index: 99; height: 175px;">
             <div class='air air1'></div>

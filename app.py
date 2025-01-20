@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,make_response,send_file,jsonify
+from flask import Flask,request,render_template,make_response,send_file,jsonify,redirect, url_for, make_response, flash
 from io import BytesIO
 import os
 import zipfile
@@ -9,40 +9,95 @@ import fitz
 import re
 import google.generativeai as genai
 from dotenv import load_dotenv
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+import os
 load_dotenv()
 
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_key_for_local_development")
 
+client = MongoClient("mongodb+srv://tomayu157:wxkD0NigZCsl2yKe@dockaro.if4eg.mongodb.net/?retryWrites=true&w=majority&appName=DocKaro")
+db = client['my_database']
+users_collection = db['users']
+
+# user = {"username":"jane_doe", "mail": "jane@example.com","password":"12345678","premium":"false"}
+# users_collection.insert_one(user)
+
+# print(users_collection)
+def get_user_details():
+    username= request.cookies.get('dockaro_username')
+    userid=request.cookies.get('dockaro_id')
+    return username,userid
 
 
 @app.route('/')
 def homepage():
-    return render_template('index.html')
+    username,userid = get_user_details()
+    return render_template('index.html',user=username,userid=userid)
+
 
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html',error= "")
+
+
+
+@app.route('/login_submit',methods=['POST'])
+def login_submit():
+    username = request.form['username'].strip()
+    mail = request.form['mail'].strip()
+    password = request.form['password'].strip()
+
+    print(username,mail,password)
+
+    user = users_collection.find_one({'mail': mail})
+    if user and (user['password']==password) and (user['username']==username):
+        response = make_response(redirect(url_for('homepage')))
+        response.set_cookie('dockaro_id', str(user['_id']), max_age=None)
+        response.set_cookie('dockaro_username', user['username'], max_age=None) 
+        return response
+    elif user and (user['password']!=password):
+        return render_template('login.html',error="Password does not match")
+    else:
+        users_collection.insert_one({"username":username, "mail": mail,"password":password,"premium":"false"})
+        user = users_collection.find_one({'mail': mail})
+        response = make_response(redirect(url_for('homepage')))
+        response.set_cookie('dockaro_id', str(user['_id']), max_age=None)
+        response.set_cookie('dockaro_username', user['username'], max_age=None) 
+        
+    return response
+
+@app.route('/logout')
+def logout():
+    response = make_response(redirect(url_for('homepage')))
+    response.delete_cookie('dockaro_username')
+    response.delete_cookie('dockaro_id')
+    return response  
 
 @app.route('/encrypt')
 def encryptpdf():
-    return render_template('encrypt.html',error=None)
+    username,userid = get_user_details()
+    return render_template('encrypt.html',error=None,user=username,userid=userid)
 
 @app.route('/decrypt')
 def decryptpdf():
-    return render_template('decrypt.html',error=None)
+    username,userid = get_user_details()
+    return render_template('decrypt.html',error=None,user=username,userid=userid)
 
 
 @app.route('/encryptpdf', methods=['POST'])
 def encrypt_pdf():
+    username,userid = get_user_details()
     error=None
     file = request.files['file']
     password = request.form['password']
     repassword=request.form['repassword']
     if(password!=repassword):
         error="Error: Password doesn’t match!!"
-        return(render_template('encrypt.html',error=error))
+        return(render_template('encrypt.html',error=error,user=username,userid=userid))
 
     if file and password:
         reader = PdfReader(file)
@@ -56,17 +111,18 @@ def encrypt_pdf():
         response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
         return response
     error="Error: File or password missing"
-    return(render_template('encrypt.html',error=error))
+    return(render_template('encrypt.html',error=error,user=username,userid=userid))
 
 @app.route('/decryptpdf', methods=['POST'])
 def decrypt_pdf():
+    username,userid = get_user_details()
     error=None
     file = request.files['file']
     password = request.form['password']
     repassword=request.form['repassword']
     if(password!=repassword):
         error="Error: Password doesn’t match!!"
-        return(render_template('encrypt.html',error=error))
+        return(render_template('encrypt.html',error=error,user=username,userid=userid))
 
     if file and password:
         reader = PdfReader(file)
@@ -82,18 +138,20 @@ def decrypt_pdf():
             return response
         else:
             error="Error: File is not encrypted"
-            return(render_template('decrypt.html',error=error))
+            return(render_template('decrypt.html',error=error,user=username,userid=userid))
     error="Error: File or password missing"
-    return(render_template('encrypt.html',error=error))
+    return(render_template('encrypt.html',error=error,user=username,userid=userid))
 
 
 @app.route('/pdfsummary')
 def pdfsummary():
-    return render_template('summary.html')
+    username,userid = get_user_details()
+    return render_template('summary.html',user=username,userid=userid)
 
 
 @app.route('/gensummary', methods=['POST'])
 def summary():
+    # username,userid = get_user_details()
     error=None
     file = request.files['file']
     extra = request.form['extra']
@@ -143,7 +201,8 @@ def dockaroai(prompt):
 
 @app.route('/compress')
 def compress():
-    return render_template('compress.html')
+    username,userid = get_user_details()
+    return render_template('compress.html',user=username,userid=userid)
 
 
 @app.route('/compresspdf', methods=['POST'])
@@ -182,15 +241,17 @@ def compresspdf():
 
 @app.route('/toimages')
 def pdfimages():
-    return render_template('toimages.html',error="")
+    username,userid = get_user_details()
+    return render_template('toimages.html',error="",user=username,userid=userid)
 
 
 
 @app.route('/pdftoimages', methods=['POST'])
 def topdfimages():
+    username,userid = get_user_details()
     if 'file' not in request.files:
         error= "No file part"
-        return render_template('toimages.html',error=error)
+        return render_template('toimages.html',error=error,user=username,userid=userid)
     
     file = request.files['file']
     all = request.form.get('all','0')
@@ -199,7 +260,7 @@ def topdfimages():
     
     if file.filename == '':
         error= "No selected file"
-        return render_template('toimages.html',error=error)
+        return render_template('toimages.html',error=error,user=username,userid=userid)
     
     pdf_document = fitz.open(stream=file.read(), filetype="pdf")
     image_files = []
@@ -244,7 +305,8 @@ def topdfimages():
 
 @app.route('/gettext')
 def gettext():
-    return render_template('gettext.html',error="")
+    username,userid = get_user_details()
+    return render_template('gettext.html',error="",user=username,userid=userid)
 
 
 
