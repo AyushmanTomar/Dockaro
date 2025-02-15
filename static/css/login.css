@@ -114,3 +114,142 @@
     border: 1px solid #2d79f3;
     ;
 }
+/* Existing CSS remains the same */
+
+/* Add these media queries at the end */
+
+@media (max-width: 768px) {
+    /* Adjust navigation for tablets */
+    .nav-bar {
+      flex-wrap: wrap;
+      padding: 10px 20px;
+    }
+    
+    .links-box {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .links-box a {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+    
+    .login-box {
+      margin-left: auto;
+    }
+  
+    /* Form adjustments */
+    .form {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .inputForm {
+      height: 45px;
+    }
+  
+    /* Footer adjustments */
+    .footer-col {
+      width: 50%;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  
+    .social-links {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Mobile-specific adjustments */
+    .nav-bar {
+      padding: 10px;
+    }
+    
+    .logo-box img {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .logo-text h1 {
+      font-size: 1.5rem;
+    }
+  
+    .links-box {
+      display: none; /* Hide links on mobile */
+    }
+  
+    /* Form adjustments */
+    .form {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .input {
+      font-size: 14px;
+    }
+  
+    .button-submit {
+      height: 45px;
+      font-size: 14px;
+    }
+  
+    /* Footer adjustments */
+    .footer-col {
+      width: 100%;
+    }
+  
+    .container1 {
+      padding: 0 15px;
+    }
+  
+    .content-box h1 {
+      font-size: 1.8rem;
+    }
+  
+    /* Adjust input fields */
+    .inputForm svg {
+      width: 18px;
+      height: 18px;
+    }
+  
+    .flex-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  }
+  
+  /* Make form responsive by default */
+  .form {
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  /* Footer responsiveness */
+  .footer-col {
+    width: 25%;
+    padding: 0 15px;
+  }
+  
+  @media (max-width: 600px) {
+    .footer-col {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+  
+  /* Ensure images are responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Make buttons more touch-friendly */
+  .button-submit, .btn {
+    min-height: 45px;
+  }

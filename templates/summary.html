@@ -73,6 +73,11 @@
                 <a href="/tools"><i class="uil uil-wrench"></i> Tools</a>
                 <a href="/premium"><i class="uil uil-star"></i> Premium</a>
                 <a href="/"><i class="uil uil-info-circle" style="font-size: 20px;"></i> About</a>
+                {% if user %}
+                <div class="username" style="color: red; font-size: 20px;cursor: pointer;"><i
+                        class="uil uil-user-circle"></i>
+                    {{user}}</div>
+                {% endif %}
             </div>
             <div class="menu-toggle">
                 <i class="uil uil-bars"></i>
@@ -84,7 +89,6 @@
             {% endif %}
             {%if user%}
             <div class="login-box" style="display: flex;flex-direction: row; align-items: center;justify-content: center;gap: 15px;">
-                <div class="" style="color: red; font-size: 20px;cursor: pointer;"><i class="uil uil-user-circle"></i> {{user}}</div>
                 <button class="login" onclick="location.href='/logout'">logout</button>
             </div>
             {%endif%}
