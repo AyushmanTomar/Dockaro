@@ -18,7 +18,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_key_for_local_development")
 
-client = MongoClient("mongodb+srv://tomayu157:wxkD0NigZCsl2yKe@dockaro.if4eg.mongodb.net/?retryWrites=true&w=majority&appName=DocKaro")
+client = MongoClient(os.environ.get("MONGO_STRING"))
 db = client['my_database']
 users_collection = db['users']
 
@@ -311,4 +311,4 @@ def gettext():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
