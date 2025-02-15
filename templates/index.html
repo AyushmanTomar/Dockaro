@@ -3,14 +3,33 @@
 
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4004628083281449"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
     <link rel="shortcut icon" href="{{url_for('static',filename='images/dockaro_logo.png')}}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <title>DOCKARO</title>
+    <style>
+        .add {
+            height: 250px;
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .add {
+                flex-direction: column;
+                height: 1000px;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -38,15 +57,18 @@
             </div>
             {% if not user %}
             <div class="login-box">
-                <button class="login" onclick="location.href='/login'"><i class="uil uil-user-circle"></i> Login</button>
+                <button class="login" onclick="location.href='/login'"><i class="uil uil-user-circle"></i>
+                    Login</button>
             </div>
             {% endif %}
             {%if user%}
-            <div class="login-box" style="display: flex;flex-direction: row; align-items: center;justify-content: center;gap: 15px;">
-                <div class="" style="color: red; font-size: 20px;cursor: pointer;"><i class="uil uil-user-circle"></i> {{user}}</div>
+            <div class="login-box"
+                style="display: flex;flex-direction: row; align-items: center;justify-content: center;gap: 15px;">
+                <div class="" style="color: red; font-size: 20px;cursor: pointer;"><i class="uil uil-user-circle"></i>
+                    {{user}}</div>
                 <button class="login" onclick="location.href='/logout'">logout</button>
             </div>
-            {%endif%}   
+            {%endif%}
             <div class="menu-toggle">
                 <i class="uil uil-bars"></i>
             </div>
@@ -82,7 +104,8 @@
                         <p class="text-title">Compress PDF</p>
                         <p class="text-body">Compress PDF to 3 different levels.</p>
                     </div>
-                    <button class="card-button" onclick="window.location.href='/compress'">Compress PDF <i class="uis uis-arrow-up-right"></i></button>
+                    <button class="card-button" onclick="window.location.href='/compress'">Compress PDF <i
+                            class="uis uis-arrow-up-right"></i></button>
                 </div>
                 <div class="card">
                     <div class="card-details">
@@ -98,7 +121,8 @@
                         <p class="text-title">PDF to Image</p>
                         <p class="text-body">Convert PDF to images online.</p>
                     </div>
-                    <button class="card-button" onclick="window.location.href='/toimages'">Make Images<i class="uis uis-arrow-up-right"></i></button>
+                    <button class="card-button" onclick="window.location.href='/toimages'">Make Images<i
+                            class="uis uis-arrow-up-right"></i></button>
                 </div>
                 <div class="card">
                     <div class="card-details">
@@ -114,7 +138,8 @@
                         <p class="text-title">Encrypt PDF</p>
                         <p class="text-body">Make any PDF Password Protected.</p>
                     </div>
-                    <button class="card-button" onclick="window.location.href='/encrypt'">Encript PDF <i class="uis uis-arrow-up-right"></i></button>
+                    <button class="card-button" onclick="window.location.href='/encrypt'">Encript PDF <i
+                            class="uis uis-arrow-up-right"></i></button>
                 </div>
                 <div class="card">
                     <div class="card-details">
@@ -122,7 +147,8 @@
                         <p class="text-title">Decrypt PDF</p>
                         <p class="text-body">Remove Password from any PDF.</p>
                     </div>
-                    <button class="card-button" onclick="window.location.href='/decrypt'">Decrypt PDF <i class="uis uis-arrow-up-right"></i></button>
+                    <button class="card-button" onclick="window.location.href='/decrypt'">Decrypt PDF <i
+                            class="uis uis-arrow-up-right"></i></button>
                 </div>
                 <div class="card">
                     <div class="card-details">
@@ -130,7 +156,8 @@
                         <p class="text-title">Extract text</p>
                         <p class="text-body">Extract text from PDF online.</p>
                     </div>
-                    <button class="card-button" onclick="window.location.href='/gettext'">Extract Text<i class="uis uis-arrow-up-right"></i></button>
+                    <button class="card-button" onclick="window.location.href='/gettext'">Extract Text<i
+                            class="uis uis-arrow-up-right"></i></button>
                 </div>
                 <div class="card">
                     <div class="card-details">
@@ -198,44 +225,48 @@
             <div class="add" style="">
                 <script type="text/javascript">
                     atOptions = {
-                        'key' : '93096a6a5604a7dd12dc32e0e46e496c',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
+                        'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                <script type="text/javascript"
+                    src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
                 <script type="text/javascript">
                     atOptions = {
-                        'key' : '93096a6a5604a7dd12dc32e0e46e496c',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
+                        'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                <script type="text/javascript"
+                    src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
                 <script type="text/javascript">
                     atOptions = {
-                        'key' : '93096a6a5604a7dd12dc32e0e46e496c',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
+                        'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                <script type="text/javascript"
+                    src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
                 <script type="text/javascript">
                     atOptions = {
-                        'key' : '93096a6a5604a7dd12dc32e0e46e496c',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
+                        'key': '93096a6a5604a7dd12dc32e0e46e496c',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
+                <script type="text/javascript"
+                    src="//www.topcreativeformat.com/93096a6a5604a7dd12dc32e0e46e496c/invoke.js"></script>
             </div>
         </div>
         <footer class="footer" style="margin-top: 50px;">
@@ -256,7 +287,7 @@
                             <li><a href="#">how to?</a></li>
                             <li><a href="#">AI</a></li>
                             <li><a href="#">data</a></li>
-                          
+
                             <li><a href="#">payment options</a></li>
                         </ul>
                     </div>
@@ -288,12 +319,12 @@
             const preloader = document.getElementById('loader-box');
             preloader.style.display = 'none'; // Hide preloader
         });
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
             document.querySelector('.links-box').classList.toggle('active');
         });
-        
+
         // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (!event.target.closest('.nav-bar')) {
                 document.querySelector('.links-box').classList.remove('active');
             }

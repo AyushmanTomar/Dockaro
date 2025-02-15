@@ -773,14 +773,6 @@ ul {
     display: none;
 }
 
-.add {
-    height: 250px;
-    display: flex;
-    gap: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-top: 50px;
-}
 
 @media (max-width: 768px) {
     .nav-bar {
@@ -857,23 +849,11 @@ ul {
         cursor: pointer;
     }
 
-    .add {
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-    }
+    
 
     .add iframe {
         width: 100%;
         margin: 10px 0;
-    }
-    .add {
-        height: 1000px;
-        display: flex;
-        gap: 10px;
-        padding: 20px;
-        box-sizing: border-box;
-        margin-top: 50px;
     }
 }
 
