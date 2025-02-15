@@ -134,7 +134,8 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     row-gap: 30px;
-    padding: 0em 4em;
+    padding: 0em 5em;
+    justify-content: space-between;
     gap: 30px;
 }
 
@@ -754,8 +755,149 @@ ul{
 	color: #24262b;
 	background-color: #ffffff;
 }
+/* Add hamburger menu */
+.menu-toggle {
+    display: none;
+}
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
 
-/*responsive*/
+    .links-box {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .links-box.active {
+        display: flex;
+    }
+
+    .login-box {
+        position: absolute;
+        top: 17px;
+        right: 45px;
+    }
+
+    .features-box {
+        padding: 0 1em;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .card1 {
+        max-width: 90%;
+        margin-bottom: 2rem;
+    }
+
+    .heading {
+        padding-left: 2em;
+    }
+
+    .top {
+        width: 90%;
+        text-align: center;
+    }
+
+    .top h1 {
+        font-size: 1.8rem;
+    }
+
+    .top h3 {
+        font-size: 1rem;
+    }
+
+    .footer-col {
+        width: 100%;
+        padding: 0 1rem;
+        margin-bottom: 30px;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 21px;
+        right: 10px;
+        font-size: 1.5rem;
+        color: red;
+        cursor: pointer;
+    }
+
+    .add {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .add iframe {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-bar {
+        padding: 10px 15px;
+    }
+
+    .login {
+        padding: 5px 15px;
+        font-size: 14px;
+    }
+
+    .content-box {
+        padding: 1em;
+    }
+    .features-box {
+        padding: 0 1em;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .heading {
+        padding-left: 1em;
+    }
+
+    .heading h1 {
+        font-size: 1.5rem;
+    }
+
+    #logo-a {
+        font-size: 32px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    .card-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .footer-col h4 {
+        font-size: 16px;
+    }
+
+    .footer-col ul li a {
+        font-size: 14px;
+    }
+}
+
+
+
+
 @media(max-width: 767px){
   .footer-col{
     width: 50%;

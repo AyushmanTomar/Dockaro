@@ -47,6 +47,9 @@
                 <button class="login" onclick="location.href='/logout'">logout</button>
             </div>
             {%endif%}   
+            <div class="menu-toggle">
+                <i class="uil uil-bars"></i>
+            </div>
         </nav>
         <section style="margin-top: 70px; z-index: 99;">
             <div class='air air1'></div>
@@ -142,7 +145,7 @@
                 <img src="{{url_for('static',filename='/images/premium.png')}}" alt="" id="premium">
                 <h1> Premium <span style="color: red;">AI-Tools</span></h1>
             </div>
-            <div class="features-box" style="justify-content: space-between; padding: 0px 5em">
+            <div class="features-box" style=" ">
                 <div class="card1">
                     <div class="image1">
                         <img src="{{url_for('static',filename='/images/notes.jpg')}}" alt="">
@@ -285,8 +288,17 @@
             const preloader = document.getElementById('loader-box');
             preloader.style.display = 'none'; // Hide preloader
         });
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.links-box').classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-bar')) {
+                document.querySelector('.links-box').classList.remove('active');
+            }
+        });
     </script>
-
 </body>
 
 </html>

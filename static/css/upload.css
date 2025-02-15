@@ -283,6 +283,17 @@ input:hover {
     border: 2px solid #7ED957;
 }
 
+.container {
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .radio-input {
     position: absolute;
     left: 0;
@@ -365,4 +376,130 @@ input:hover {
     background-color: #ffffff;
     transform: scale(1.05);
     box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container2 {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .content-box {
+        flex-direction: column !important;
+        width: 80%;
+        padding: 15px;
+        margin-bottom: 100px;
+    }
+
+    .left, .right {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .right {
+        padding-left: 0 !important;
+        flex-direction: column;
+    }
+
+    .header2 svg {
+        height: 60px;
+    }
+
+    .head-karo {
+        flex-direction: column;
+        padding: 0 20px !important;
+        text-align: center;
+    }
+
+    .head-karo-in {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+
+    .submit-files {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .password-box {
+        padding: 15px !important;
+    }
+
+    .radio-input-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .labelr {
+        width: fit-content;
+        padding: 8px 10px;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    .add {
+        width: 100% !important;
+        flex-direction: column;
+        padding: 10px !important;
+    }
+
+    .footer2 svg {
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container2 {
+        height: 250px;
+    }
+
+    .header2 p {
+        font-size: 14px;
+    }
+
+    .head-karo h1 {
+        font-size: 1.5rem;
+    }
+
+    .head-karo h3 {
+        font-size: 1rem;
+    }
+
+    .password-head h2 {
+        font-size: 1.2rem;
+    }
+
+    .label-text {
+        font-size: 13px;
+        margin-left: 10px;
+    }
+
+    .radio-design {
+        width: 18px;
+        height: 18px;
+    }
+
+    .footer2 p {
+        font-size: 12px;
+    }
+
+    #loaderad .add {
+        display: none; /* Hide ads in loader on mobile */
+    }
+
+    #loaderad .anim {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Specific mobile adjustments */
+@media (hover: none) {
+    .submit-files:hover {
+        background: red; /* Disable hover effects on touch devices */
+    }
 }

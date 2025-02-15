@@ -60,7 +60,7 @@
                 src="//www.topcreativeformat.com/e8a5812e30215067a25e2634d7afefaa/invoke.js"></script>
         </div>
     </div>
-    <div class="container" style="height: 90vh;">
+    <div class="container">
         <nav class="nav-bar">
             <div class="logo-box">
                 <img src="{{url_for('static',filename='images/icon.png')}}" alt="" width="45px" height="45px">
@@ -73,6 +73,9 @@
                 <a href="/tools"><i class="uil uil-wrench"></i> Tools</a>
                 <a href="/premium"><i class="uil uil-star"></i> Premium</a>
                 <a href="/"><i class="uil uil-info-circle" style="font-size: 20px;"></i> About</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="uil uil-bars"></i>
             </div>
             {% if not user %}
             <div class="login-box">
@@ -256,6 +259,15 @@
         </div>
     </footer>
     <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.links-box').classList.toggle('active');
+        });
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-bar')) {
+                document.querySelector('.links-box').classList.remove('active');
+            }
+        });
         window.addEventListener('load', function () {
             const preloader = document.getElementById('loader-box');
             preloader.style.display = 'none'; // Hide preloader
